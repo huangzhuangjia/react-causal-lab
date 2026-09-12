@@ -1,0 +1,2707 @@
+.page {
+  position: relative;
+  width: min(1440px, calc(100% - 48px));
+  height: calc(100dvh - 73px);
+  min-height: 0;
+  margin: 0 auto;
+  padding: 28px 0 36px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pageGlow {
+  position: absolute;
+  top: -120px;
+  right: 14%;
+  z-index: -1;
+  width: 440px;
+  height: 300px;
+  pointer-events: none;
+  background: rgba(97, 218, 251, 0.1);
+  border-radius: 50%;
+  filter: blur(110px);
+}
+
+.labHeader,
+.titleRow,
+.labFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.labHeader {
+  min-height: 34px;
+  margin-bottom: 22px;
+}
+
+.breadcrumbs,
+.labHeaderMeta,
+.keyboardHint,
+.modelBadge,
+.versionBadge,
+.breadcrumbs,
+.sourceReference,
+.controlHint,
+.scenarioSummary,
+.tonePill,
+.predictionFeedback,
+.phaseBadge,
+.playbackStatus,
+.shareButton,
+.speedControl,
+.breakpointToggle,
+.treeTitle,
+.treeMeta,
+.domRow,
+.timelineTopline,
+.timelineControls,
+.controlCluster,
+.timelineOptions {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs {
+  flex-wrap: wrap;
+  gap: 7px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+.breadcrumbs svg {
+  color: var(--text-faint);
+  transform: rotate(-90deg);
+}
+
+.breadcrumbs strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.labHeaderMeta {
+  gap: 8px;
+}
+
+.modelBadge,
+.versionBadge {
+  min-height: 28px;
+  gap: 6px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.modelBadge {
+  color: var(--accent-violet);
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.versionBadge {
+  color: var(--accent-green);
+  border: 1px solid rgba(103, 232, 165, 0.22);
+  background: rgba(103, 232, 165, 0.07);
+}
+
+.titleRow {
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.pageEyebrow,
+.panelEyebrow,
+.controlLabel,
+.sectionLabel {
+  display: block;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.pageEyebrow {
+  margin-bottom: 9px;
+  color: var(--accent-cyan);
+}
+
+.titleRow h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.titleRow p {
+  max-width: 620px;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.keyboardHint {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.keyboardHint kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-bottom-color: rgba(148, 163, 184, 0.45);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  font-size: 10px;
+}
+
+.mobileTabs {
+  display: none;
+}
+
+.labGrid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.76fr) minmax(460px, 1.9fr) minmax(260px, 0.9fr);
+  align-items: stretch;
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 14px;
+}
+
+.panelSlot {
+  min-width: 0;
+  min-height: 0;
+}
+
+.panelSlot[data-panel='controls'],
+.panelSlot[data-panel='inspector'] {
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin;
+}
+
+.panelSlot[data-panel='stage'] {
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.controlsStack {
+  display: grid;
+  gap: 14px;
+}
+
+.controlCard,
+.predictionCard,
+.stageCard,
+.timelineCard,
+.inspector,
+.inspectorEmpty,
+.truthCard {
+  border: 1px solid var(--border-subtle);
+  background: rgba(17, 26, 46, 0.78);
+  box-shadow: var(--shadow-panel);
+}
+
+.controlCard,
+.predictionCard,
+.inspector,
+.inspectorEmpty,
+.truthCard {
+  border-radius: var(--radius-md);
+}
+
+.controlCard {
+  padding: 18px;
+}
+
+.controlCardHeading,
+.predictionHeading,
+.inspectorHeading,
+.stageHeader,
+.treeColumnHeader,
+.domSection > .treeColumnHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.controlCardHeading h2,
+.predictionHeading h2,
+.inspectorHeading h2,
+.stageHeader h2 {
+  margin-top: 5px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+
+.iconButton,
+.timelineIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 9px;
+  transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
+}
+
+.iconButton {
+  width: 34px;
+  height: 34px;
+}
+
+.iconButton:hover,
+.timelineIconButton:hover:not(:disabled) {
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-soft);
+  border-color: rgba(97, 218, 251, 0.35);
+}
+
+.iconButton:active,
+.timelineIconButton:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.controlGroup {
+  margin-top: 21px;
+}
+
+.controlLabel {
+  margin-bottom: 9px;
+}
+
+.strategyList,
+.operationList {
+  display: grid;
+  gap: 7px;
+}
+
+.strategyButton,
+.operationButton {
+  display: flex;
+  align-items: center;
+  min-height: 47px;
+  gap: 10px;
+  padding: 8px 10px;
+  color: var(--text-secondary);
+  text-align: left;
+  background: rgba(8, 13, 26, 0.22);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9px;
+  transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
+}
+
+.strategyButton:hover,
+.operationButton:hover {
+  color: var(--text-primary);
+  background: rgba(97, 218, 251, 0.055);
+  border-color: rgba(97, 218, 251, 0.26);
+}
+
+.strategyButton:active,
+.operationButton:active {
+  transform: scale(0.985);
+}
+
+.strategyActive,
+.operationActive {
+  color: var(--text-primary);
+  background: rgba(97, 218, 251, 0.09);
+  border-color: rgba(97, 218, 251, 0.4);
+  box-shadow: inset 3px 0 0 var(--accent-cyan);
+}
+
+.strategyButton > span:nth-child(2) {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+}
+
+.strategyButton strong {
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.strategyButton small {
+  color: var(--text-faint);
+  font-size: 10px;
+}
+
+.strategyDot,
+.toneDot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.strategyDot[data-tone='cyan'],
+.tonecyan .toneDot {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(97, 218, 251, 0.7);
+}
+
+.strategyDot[data-tone='coral'],
+.tonecoral .toneDot {
+  background: var(--accent-coral);
+  box-shadow: 0 0 10px rgba(255, 122, 144, 0.7);
+}
+
+.strategyDot[data-tone='amber'],
+.toneamber .toneDot {
+  background: var(--accent-amber);
+  box-shadow: 0 0 10px rgba(246, 200, 95, 0.7);
+}
+
+.operationList {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.operationButton {
+  min-height: 39px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.operationButton svg {
+  color: var(--text-faint);
+}
+
+.operationActive svg {
+  color: var(--accent-cyan);
+}
+
+.selectLabel {
+  display: grid;
+  gap: 7px;
+  margin-top: 11px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.selectWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectWrap select,
+.speedControl select {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 30px 0 10px;
+  color: var(--text-secondary);
+  appearance: none;
+  background: rgba(8, 13, 26, 0.35);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.selectWrap > svg,
+.speedControl > svg:last-child {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: var(--text-faint);
+}
+
+.scenarioSummary {
+  justify-content: center;
+  gap: 9px;
+  min-height: 39px;
+  margin-top: 18px;
+  padding: 0 10px;
+  background: rgba(8, 13, 26, 0.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.tonePill {
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.tonecyan { color: var(--accent-cyan); }
+.tonecoral { color: var(--accent-coral); }
+.toneamber { color: var(--accent-amber); }
+
+.summaryArrow {
+  color: var(--text-faint);
+}
+
+.summaryText {
+  color: var(--text-muted);
+}
+
+.predictionCard {
+  position: relative;
+  padding: 18px;
+  overflow: hidden;
+  border-color: rgba(246, 200, 95, 0.23);
+  background: linear-gradient(145deg, rgba(49, 44, 37, 0.48), rgba(17, 26, 46, 0.78));
+}
+
+.predictionCard::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+  opacity: 0.7;
+}
+
+.predictionHeading {
+  justify-content: flex-start;
+}
+
+.predictionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  color: var(--accent-amber);
+  background: rgba(246, 200, 95, 0.12);
+  border: 1px solid rgba(246, 200, 95, 0.28);
+  border-radius: 9px;
+}
+
+.predictionPrompt {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.predictionOptions {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.predictionOption {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  gap: 9px;
+  padding: 0 9px;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: color 160ms ease-out, background-color 160ms ease-out, border-color 160ms ease-out;
+}
+
+.predictionOption:hover {
+  color: var(--text-primary);
+  background: rgba(246, 200, 95, 0.06);
+  border-color: rgba(246, 200, 95, 0.2);
+}
+
+.predictionOption input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent-amber);
+}
+
+.predictionButton,
+.shareButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 39px;
+  gap: 7px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 650;
+  transition: transform 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+}
+
+.predictionButton {
+  width: 100%;
+  margin-top: 13px;
+  color: #17130a;
+  background: var(--accent-amber);
+  border: 1px solid var(--accent-amber);
+}
+
+.predictionButton:hover:not(:disabled) {
+  background: #ffe08b;
+  border-color: #ffe08b;
+  transform: translateY(-1px);
+}
+
+.predictionButton:disabled {
+  color: var(--text-faint);
+  background: rgba(148, 163, 184, 0.1);
+  border-color: var(--border-subtle);
+}
+
+.predictionComplete {
+  border-color: rgba(103, 232, 165, 0.28);
+  background: linear-gradient(145deg, rgba(28, 67, 57, 0.42), rgba(17, 26, 46, 0.78));
+}
+
+.predictionComplete::before {
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+}
+
+.predictionComplete .predictionIcon {
+  color: var(--accent-green);
+  background: rgba(103, 232, 165, 0.12);
+  border-color: rgba(103, 232, 165, 0.28);
+}
+
+.predictionFeedback {
+  gap: 8px;
+  min-height: 38px;
+  margin-top: 14px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+.feedbackCorrect {
+  color: var(--accent-green);
+  background: rgba(103, 232, 165, 0.08);
+  border: 1px solid rgba(103, 232, 165, 0.18);
+}
+
+.feedbackWrong {
+  color: var(--accent-coral);
+  background: rgba(255, 122, 144, 0.08);
+  border: 1px solid rgba(255, 122, 144, 0.18);
+}
+
+.feedbackNeutral {
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.08);
+  border: 1px solid rgba(97, 218, 251, 0.18);
+}
+
+.controlHint {
+  gap: 8px;
+  padding: 1px 3px;
+  color: var(--text-faint);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.controlHint svg {
+  flex: 0 0 auto;
+  color: var(--accent-violet);
+}
+
+.strategyWarning {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 11px;
+  padding: 9px 10px;
+  color: var(--accent-amber);
+  background: rgba(246, 200, 95, 0.06);
+  border: 1px solid rgba(246, 200, 95, 0.18);
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.strategyWarning svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.previousSummary {
+  padding: 13px;
+  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 10px;
+}
+
+.previousSummaryHeading,
+.previousSummaryMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.previousSummaryBadge {
+  padding: 3px 6px;
+  color: var(--accent-violet);
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.previousSummaryMeta {
+  justify-content: flex-start;
+  margin-top: 11px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.previousSummaryMeta code {
+  color: var(--accent-violet);
+}
+
+.previousSummary p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.stageWorkspace {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  gap: 10px;
+}
+
+.stageWorkspaceFocus {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  background: var(--bg-canvas);
+  gap: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  animation: workspaceReveal 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stageWorkspaceFocus::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+  background:
+    radial-gradient(circle at 18% 12%, rgba(97, 218, 251, 0.11), transparent 32%),
+    radial-gradient(circle at 86% 78%, rgba(167, 139, 250, 0.09), transparent 34%);
+}
+
+.stageWorkspaceFocus .stageCard {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.stageWorkspaceFocus .timelineDock {
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.stageWorkspaceFocus .timelineCard {
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.32);
+}
+
+.stageCard {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius-lg);
+  background: rgba(11, 19, 35, 0.82);
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin;
+}
+
+.stageHeader {
+  align-items: center;
+  padding: 19px 20px 14px;
+}
+
+.stageHeaderActions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.focusModeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  gap: 6px;
+  padding: 0 9px;
+  color: var(--text-muted);
+  background: rgba(97, 218, 251, 0.045);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  white-space: nowrap;
+  transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.focusModeButton:hover {
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.1);
+  border-color: rgba(97, 218, 251, 0.38);
+}
+
+.focusModeButton:active {
+  transform: scale(0.97);
+}
+
+.focusModeButtonActive {
+  color: var(--accent-green);
+  background: rgba(103, 232, 165, 0.09);
+  border-color: rgba(103, 232, 165, 0.34);
+}
+
+.focusModeButton kbd {
+  min-width: 24px;
+  padding: 2px 4px;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.phaseBadge {
+  min-height: 27px;
+  gap: 7px;
+  padding: 0 9px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  transition: color 220ms ease-out, background-color 220ms ease-out, border-color 220ms ease-out;
+  animation: phaseBadgeReveal 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eventTrigger { color: var(--accent-cyan); background: rgba(97, 218, 251, 0.07); }
+.eventRender { color: var(--accent-violet); background: rgba(167, 139, 250, 0.07); }
+.eventReconcile { color: var(--accent-coral); background: rgba(255, 122, 144, 0.07); }
+.eventCommit { color: var(--accent-amber); background: rgba(246, 200, 95, 0.08); }
+
+.phaseDot,
+.statusDotSmall,
+.footerDot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 9px currentColor;
+}
+
+.eventBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 20px 16px;
+  padding: 12px 13px;
+  background: rgba(97, 218, 251, 0.05);
+  border: 1px solid rgba(97, 218, 251, 0.15);
+  border-radius: 10px;
+  animation: eventReveal 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eventNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.1);
+  border: 1px solid rgba(97, 218, 251, 0.22);
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.eventBanner strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 620;
+}
+
+.eventBanner p {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.treeWorkspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 9px;
+  padding: 0 20px 17px;
+}
+
+.treeColumn {
+  min-width: 0;
+  padding: 11px;
+  background: rgba(8, 13, 26, 0.34);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.treeColumn:last-child {
+  border-style: dashed;
+  border-color: rgba(167, 139, 250, 0.28);
+}
+
+.treeColumnHeader {
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.treeTitle {
+  gap: 7px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
+.treeMeta {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.currentLegend,
+.wipLegend,
+.domLegend {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+}
+
+.currentLegend { background: var(--accent-cyan); box-shadow: 0 0 9px rgba(97, 218, 251, 0.6); }
+.wipLegend { border: 1px dashed var(--accent-violet); }
+.domLegend { background: var(--accent-amber); box-shadow: 0 0 9px rgba(246, 200, 95, 0.5); }
+
+.fiberList {
+  display: grid;
+  gap: 6px;
+}
+
+.fiberRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 12px minmax(28px, 1fr) auto;
+  align-items: center;
+  min-width: 0;
+  min-height: 55px;
+  gap: 7px;
+  padding: 7px 8px;
+  color: var(--text-secondary);
+  text-align: left;
+  background: rgba(17, 26, 46, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 8px;
+  cursor: pointer;
+  --fiber-entry-x: 0px;
+  --fiber-entry-y: 12px;
+  --fiber-entry-scale: 0.985;
+  --fiber-entry-offset-y: 0px;
+  /* Existing rows should remain visible while their position or flags change.
+   * A transform-only entry is easier to follow than a fade-out/fade-in flash. */
+  --fiber-entry-opacity: 1;
+  --fiber-final-opacity: 1;
+  will-change: transform, opacity;
+  animation: fiberRowReveal 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 220ms ease-out, border-color 180ms ease-out, background-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.fiberRow:hover {
+  background: rgba(29, 43, 72, 0.8);
+  border-color: rgba(97, 218, 251, 0.32);
+  transform: translateX(2px);
+}
+
+.fiberRow:nth-child(2) { animation-delay: 35ms; }
+.fiberRow:nth-child(3) { animation-delay: 70ms; }
+.fiberRow:nth-child(4) { animation-delay: 105ms; }
+.fiberRow:nth-child(5) { animation-delay: 140ms; }
+.fiberRow:nth-child(6) { animation-delay: 175ms; }
+
+.fiberSelected {
+  z-index: 1;
+  border-color: rgba(97, 218, 251, 0.78) !important;
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.1), 0 0 20px rgba(97, 218, 251, 0.1);
+}
+
+.fiberFocused {
+  animation:
+    fiberRowReveal 560ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    focusPulse 650ms ease-out both;
+}
+
+.fiberMounted {
+  --fiber-entry-y: -12px;
+  --fiber-entry-scale: 0.94;
+  --fiber-entry-opacity: 0.82;
+  border-left: 2px solid var(--accent-amber);
+}
+.fiberMoved {
+  --fiber-entry-x: 18px;
+  --fiber-entry-y: 0px;
+  --fiber-entry-scale: 0.98;
+  --fiber-entry-opacity: 1;
+  border-left: 2px solid var(--accent-violet);
+}
+.fiberUpdated {
+  --fiber-entry-y: 7px;
+  --fiber-entry-scale: 0.97;
+  --fiber-entry-opacity: 1;
+  border-left: 2px solid var(--accent-coral);
+}
+.fiberReused { border-left: 2px solid rgba(97, 218, 251, 0.45); }
+
+/* Reused rows stay mounted while the timeline advances. Keep their initial
+ * reveal neutral so a stable row never flashes from opacity: 0; only a real
+ * mount, move, update, or deletion receives a visible entry treatment. */
+.fiberReused {
+  --fiber-entry-x: 0px;
+  --fiber-entry-y: 0px;
+  --fiber-entry-scale: 1;
+  --fiber-entry-opacity: 1;
+}
+
+.fiberDeleted {
+  --fiber-entry-x: -16px;
+  --fiber-entry-y: 0px;
+  --fiber-entry-scale: 0.98;
+  --fiber-entry-opacity: 0.82;
+  border-left: 2px solid var(--accent-red);
+}
+
+.fiberIndex {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.fiberNode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 50%;
+}
+
+.fiberNode span {
+  width: 4px;
+  height: 4px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+}
+
+.fiberIdentity {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.fiberIdentity strong {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.fiberIdentity small {
+  overflow: hidden;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  text-overflow: ellipsis;
+}
+
+.fiberKey {
+  display: none;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.fiberKey code {
+  margin-left: 3px;
+  color: var(--accent-cyan);
+}
+
+.fiberState {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.fiberState strong {
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fiberStatus {
+  position: absolute;
+  right: 7px;
+  bottom: 5px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.flagList {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  display: flex;
+  gap: 3px;
+}
+
+.flag,
+.inspectorState {
+  display: inline-flex;
+  align-items: center;
+  min-height: 17px;
+  padding: 0 5px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.flagPlacement { color: var(--accent-violet); background: rgba(167, 139, 250, 0.08); }
+.flagUpdate { color: var(--accent-coral); background: rgba(255, 122, 144, 0.08); }
+.flagDeletion { color: var(--accent-red); background: rgba(251, 113, 133, 0.08); }
+
+.emptyTree {
+  display: grid;
+  min-height: 78px;
+  place-items: center;
+  color: var(--text-faint);
+  border: 1px dashed var(--border-subtle);
+  border-radius: 8px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.treeConnector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-height: 80px;
+  overflow: hidden;
+  color: var(--accent-violet);
+  animation: connectorReveal 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.treeConnector::after {
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent-violet);
+  border-radius: 50%;
+  content: '';
+  opacity: 0;
+  transform: translate3d(-50%, 0, 0) scale(0.5);
+}
+
+.treeWorkspace[data-phase='reconcile'] .treeConnector::after,
+.treeWorkspace[data-phase='commit'] .treeConnector::after {
+  animation: connectorSignal 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.connectorLine {
+  position: absolute;
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.65), transparent);
+}
+
+.treeConnector svg {
+  position: relative;
+  z-index: 1;
+  padding: 4px;
+  width: 22px;
+  height: 22px;
+  background: var(--bg-deep);
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  border-radius: 50%;
+}
+
+.connectorLabel {
+  position: absolute;
+  margin-top: 47px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.domSection {
+  margin: 0 20px 20px;
+  padding: 12px;
+  background: rgba(8, 13, 26, 0.34);
+  border: 1px solid rgba(246, 200, 95, 0.18);
+  border-radius: 10px;
+}
+
+.domSection[data-phase='commit'] {
+  animation: domCommitReveal 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.domSection > .treeColumnHeader {
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.domList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.domRow {
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 38px;
+  gap: 8px;
+  padding: 0 9px;
+  color: var(--text-secondary);
+  text-align: left;
+  background: rgba(17, 26, 46, 0.56);
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  --dom-entry-offset-y: 0px;
+  /* DOM rows that move or update should travel from their previous position
+   * without disappearing between snapshots. */
+  --dom-entry-opacity: 1;
+  font-size: 9px;
+  will-change: transform, opacity;
+  animation: domRowReveal 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
+}
+
+.domRow[data-motion='stable'] {
+  --dom-entry-offset-y: 0px;
+  --dom-entry-opacity: 1;
+}
+
+.domRow:hover,
+.domRowSelected {
+  background: rgba(246, 200, 95, 0.08);
+  border-color: rgba(246, 200, 95, 0.38);
+  transform: translateY(-1px);
+}
+
+.domRow:nth-child(2) { animation-delay: 40ms; }
+.domRow:nth-child(3) { animation-delay: 80ms; }
+.domRow:nth-child(4) { animation-delay: 120ms; }
+
+.domTag {
+  color: var(--accent-amber);
+}
+
+.domLabel {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  text-overflow: ellipsis;
+}
+
+.domState {
+  margin-left: auto;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.domRow > svg {
+  margin-left: auto;
+  flex: 0 0 auto;
+  color: var(--text-faint);
+}
+
+.timelineDock {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.inspectorTimeline {
+  display: none;
+}
+
+.timelineCard {
+  padding: 10px 12px 11px;
+  border-radius: var(--radius-md);
+  background: rgba(17, 26, 46, 0.78);
+}
+
+.shareFallback {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 9px 11px;
+  color: var(--accent-amber);
+  background: rgba(246, 200, 95, 0.06);
+  border: 1px solid rgba(246, 200, 95, 0.18);
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.shareFallback code {
+  overflow-wrap: anywhere;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  user-select: all;
+}
+
+.timelineTopline {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timelineFocusButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  gap: 5px;
+  padding: 0 8px;
+  color: var(--text-muted);
+  background: rgba(97, 218, 251, 0.045);
+  border: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.timelineFocusButton:hover {
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.1);
+  border-color: rgba(97, 218, 251, 0.38);
+}
+
+.timelineFocusButton:active {
+  transform: scale(0.97);
+}
+
+.stageWorkspaceFocus .timelineFocusButton {
+  display: none;
+}
+
+.timelineTopline strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.playbackStatus {
+  gap: 6px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.statusplaying { color: var(--accent-cyan); }
+.statuscomplete { color: var(--accent-green); }
+.statusprediction { color: var(--accent-amber); }
+
+.timelineTrackWrap {
+  position: relative;
+  margin-top: 7px;
+}
+
+.timelineRange {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+.timelineRange:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.timelineMarkers {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  left: 7px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.timelineMarkers span {
+  width: 5px;
+  height: 5px;
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+}
+
+.timelineMarkers .markerActive {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(97, 218, 251, 0.55);
+}
+
+.timelineEvents {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 1px;
+}
+
+.timelineEvent {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  min-height: 31px;
+  gap: 4px;
+  padding: 4px 5px;
+  color: var(--text-faint);
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: color 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out;
+}
+
+.timelineEvent::after {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  left: 5px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--accent-cyan);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 180ms ease-out, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timelineEventActive::after {
+  opacity: 0.85;
+  transform: scaleX(1);
+}
+
+.timelineEvent:hover:not(:disabled),
+.timelineEventActive {
+  color: var(--text-primary);
+  background: rgba(97, 218, 251, 0.06);
+  border-color: rgba(97, 218, 251, 0.18);
+}
+
+.timelineEvent span {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.timelineEvent strong {
+  overflow: hidden;
+  width: 100%;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timelineControls {
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.controlCluster,
+.timelineOptions {
+  gap: 7px;
+}
+
+.playButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: #07101c;
+  background: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 9px;
+  box-shadow: 0 6px 18px rgba(97, 218, 251, 0.15);
+  transition: transform 180ms ease-out, background-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.playButton:hover:not(:disabled) {
+  background: #a2edff;
+  box-shadow: 0 8px 24px rgba(97, 218, 251, 0.28);
+  transform: translateY(-1px);
+}
+
+.playButtonActive {
+  color: var(--bg-canvas);
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  animation: playPulse 1.2s ease-in-out infinite;
+}
+
+.timelineIconButton:disabled,
+.playButton:disabled,
+.timelineEvent:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.speedControl {
+  position: relative;
+  gap: 5px;
+  min-height: 36px;
+  padding-left: 8px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+
+.speedControl select {
+  min-height: 34px;
+  width: 59px;
+  padding-inline: 2px 19px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  font-size: 10px;
+}
+
+.speedControl > svg:last-child {
+  right: 5px;
+}
+
+.breakpointToggle {
+  min-height: 36px;
+  gap: 6px;
+  padding: 0 8px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 9px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.breakpointToggle input {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--accent-amber);
+}
+
+.breakpointToggle:has(input:checked) {
+  color: var(--accent-amber);
+  border-color: rgba(246, 200, 95, 0.32);
+  background: rgba(246, 200, 95, 0.06);
+}
+
+.shareButton {
+  min-height: 36px;
+  padding: 0 10px;
+  color: var(--text-secondary);
+  background: rgba(97, 218, 251, 0.06);
+  border: 1px solid rgba(97, 218, 251, 0.22);
+  white-space: nowrap;
+}
+
+.shareButton:hover {
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.12);
+  border-color: rgba(97, 218, 251, 0.42);
+}
+
+.inspector,
+.inspectorEmpty {
+  min-height: 460px;
+  padding: 18px;
+}
+
+.inspectorEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+  text-align: center;
+  border-style: dashed;
+}
+
+.inspectorEmpty svg {
+  margin-bottom: 12px;
+  color: var(--accent-cyan);
+}
+
+.inspectorEmpty strong {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.inspectorEmpty p {
+  max-width: 190px;
+  margin-top: 8px;
+  color: var(--text-faint);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.inspectorHeading {
+  align-items: center;
+}
+
+.inspectorHeading h2 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.inspectorState {
+  color: var(--accent-cyan);
+  border-color: currentColor;
+}
+
+.inspectorGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 17px;
+  overflow: hidden;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+
+.inspectorGrid > div {
+  display: grid;
+  gap: 5px;
+  min-height: 57px;
+  padding: 9px;
+  background: rgba(8, 13, 26, 0.44);
+}
+
+.inspectorGrid span,
+.inspectorGrid code {
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.inspectorGrid span {
+  color: var(--text-faint);
+}
+
+.inspectorGrid code {
+  overflow: hidden;
+  color: var(--text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inspectorCallout {
+  display: flex;
+  gap: 9px;
+  margin-top: 13px;
+  padding: 10px;
+  background: rgba(97, 218, 251, 0.055);
+  border: 1px solid rgba(97, 218, 251, 0.16);
+  border-radius: 8px;
+}
+
+.calloutIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  color: var(--accent-cyan);
+  background: rgba(97, 218, 251, 0.1);
+  border-radius: 6px;
+}
+
+.inspectorCallout strong {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.inspectorCallout p {
+  margin-top: 3px;
+  color: var(--text-faint);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.inspectorSection {
+  margin-top: 17px;
+}
+
+.inspectorFlags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.noFlags {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.inspectorExplanation {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.answerBox {
+  margin-top: 17px;
+  padding: 10px;
+  background: rgba(103, 232, 165, 0.06);
+  border: 1px solid rgba(103, 232, 165, 0.2);
+  border-radius: 8px;
+}
+
+.answerBox p {
+  margin-top: 7px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.sourceReference {
+  gap: 6px;
+  margin-top: 18px;
+  padding-top: 13px;
+  color: var(--accent-cyan);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 10px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.sourceReference svg:last-child {
+  transform: rotate(45deg);
+}
+
+.sourceDetails {
+  margin-top: 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: rgba(8, 13, 26, 0.25);
+}
+
+.sourceDetails summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sourceDetails summary::-webkit-details-marker {
+  display: none;
+}
+
+.sourceDetails summary::after {
+  margin-left: auto;
+  color: var(--text-faint);
+  content: '+';
+  font-size: 14px;
+}
+
+.sourceDetails[open] summary::after {
+  content: '−';
+}
+
+.sourceDetailsBody {
+  display: grid;
+  gap: 9px;
+  padding: 0 10px 11px;
+  color: var(--text-faint);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sourceDetailsBody code {
+  color: var(--accent-cyan);
+}
+
+.sourceCodeBlock {
+  display: block;
+  padding: 8px;
+  overflow-x: auto;
+  color: var(--accent-violet) !important;
+  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.16);
+  border-radius: 6px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.truthCard {
+  display: flex;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 12px;
+  background: rgba(167, 139, 250, 0.06);
+  border-color: rgba(167, 139, 250, 0.18);
+}
+
+.truthCardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  color: var(--accent-violet);
+  background: rgba(167, 139, 250, 0.1);
+  border-radius: 6px;
+}
+
+.truthCard strong {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.truthCard p {
+  margin-top: 4px;
+  color: var(--text-faint);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.labFooter {
+  gap: 12px;
+  margin-top: 17px;
+  padding: 0 3px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.labFooter > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footerDot {
+  background: var(--accent-green);
+  box-shadow: 0 0 8px rgba(103, 232, 165, 0.65);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes workspaceReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes eventReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fiberRowReveal {
+  from {
+    opacity: var(--fiber-entry-opacity);
+    transform: translate3d(
+      var(--fiber-entry-x),
+      calc(var(--fiber-entry-y) + var(--fiber-entry-offset-y)),
+      0
+    ) scale(var(--fiber-entry-scale));
+  }
+  to {
+    opacity: var(--fiber-final-opacity);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes domRowReveal {
+  from {
+    opacity: var(--dom-entry-opacity);
+    transform: translate3d(0, calc(8px + var(--dom-entry-offset-y)), 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes connectorReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0.35);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes phaseBadgeReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes connectorSignal {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0) scale(0.5);
+  }
+  35% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0) scale(1.65);
+  }
+}
+
+@keyframes domCommitReveal {
+  from {
+    /* Keep the result readable throughout the commit transition. Fading the
+     * whole section from 0.62 made a normal DOM update look like a flash. */
+    opacity: 1;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes playPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.88;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes focusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(97, 218, 251, 0.4); }
+  100% { box-shadow: 0 0 0 8px rgba(97, 218, 251, 0); }
+}
+
+@media (min-width: 1121px) {
+  /* Keep enough vertical room for the tree and its timeline on ordinary
+   * desktop screens. Short viewports may grow the document slightly; the
+   * dedicated focus mode remains available when the observation must fill the
+   * entire viewport. */
+  .page {
+    height: auto;
+    min-height: calc(100dvh - 73px);
+    padding-top: 16px;
+    padding-bottom: 24px;
+    overflow: visible;
+  }
+
+  .labHeader {
+    min-height: 30px;
+    margin-bottom: 14px;
+  }
+
+  .titleRow {
+    margin-bottom: 17px;
+  }
+
+  .labGrid,
+  .stageWorkspace {
+    min-height: clamp(520px, calc(100dvh - 285px), 680px);
+  }
+
+  .stageWorkspaceFocus {
+    min-height: 0;
+  }
+
+  .stageCard {
+    min-height: 380px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .fiberKey {
+    display: inline;
+  }
+
+  .fiberRow {
+    grid-template-columns: 18px 12px minmax(40px, 1fr) auto auto;
+  }
+}
+
+@media (max-width: 1120px) {
+  .page {
+    width: min(100% - 32px, 1000px);
+  }
+
+  /* The input tab is document-like and can grow with its content. Animation
+   * and inspector tabs remain viewport-bound workspaces so playback stays
+   * beside the active observation. */
+  .page:not(.pageWorkspaceMode) {
+    display: block;
+    height: auto;
+    min-height: calc(100dvh - 73px);
+    overflow: visible;
+  }
+
+  .page:not(.pageWorkspaceMode) .labGrid {
+    height: auto;
+    flex: none;
+  }
+
+  .page:not(.pageWorkspaceMode) .panelSlot[data-panel='controls'],
+  .page:not(.pageWorkspaceMode) .panelSlot[data-panel='inspector'] {
+    height: auto;
+    overflow: visible;
+  }
+
+  .pageWorkspaceMode .labHeader,
+  .pageWorkspaceMode .labFooter {
+    display: none;
+  }
+
+  .pageWorkspaceMode .titleRow {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pageWorkspaceMode .mobileTabs {
+    margin-top: 2px;
+    margin-bottom: 10px;
+  }
+
+  .mobileTabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+    padding: 4px;
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+  }
+
+  .mobileTabs button {
+    min-height: 40px;
+    color: var(--text-muted);
+    background: transparent;
+    border: 0;
+    border-radius: 7px;
+    font-size: 11px;
+  }
+
+  .mobileTabs button[aria-selected='true'] {
+    color: var(--accent-cyan);
+    background: rgba(97, 218, 251, 0.1);
+  }
+
+  .labGrid {
+    display: block;
+    height: 100%;
+  }
+
+  .mobilePanelHidden {
+    display: none !important;
+  }
+
+  .mobilePanelVisible {
+    display: block;
+    height: 100%;
+  }
+
+  .panelSlot[data-panel='stage'].mobilePanelVisible {
+    display: flex;
+  }
+
+  .panelSlot[data-panel='controls'],
+  .panelSlot[data-panel='inspector'] {
+    height: 100%;
+  }
+
+  .panelSlot[data-panel='inspector'] {
+    display: block;
+  }
+
+  .pageWorkspaceMode .panelSlot[data-panel='inspector'] {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .pageWorkspaceMode .panelSlot[data-panel='inspector'] > .inspector,
+  .pageWorkspaceMode .panelSlot[data-panel='inspector'] > .inspectorEmpty {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .pageWorkspaceMode .panelSlot[data-panel='inspector'] > .truthCard,
+  .pageWorkspaceMode .panelSlot[data-panel='inspector'] > .inspectorTimeline {
+    flex: 0 0 auto;
+  }
+
+  .inspectorTimeline {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .stageWorkspace {
+    height: 100%;
+  }
+
+  .stageWorkspaceFocus {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 0;
+    max-height: 100dvh;
+  }
+
+  .truthCard {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 860px) {
+  .page {
+    width: min(100% - 28px, 680px);
+    height: calc(100dvh - 148px);
+    height: calc(100dvh - 148px - env(safe-area-inset-bottom));
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
+  .page:not(.pageWorkspaceMode) {
+    min-height: calc(100dvh - 148px);
+    min-height: calc(100dvh - 148px - env(safe-area-inset-bottom));
+  }
+
+  .labHeader {
+    align-items: flex-start;
+  }
+
+  .labHeaderMeta {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+  }
+
+  .titleRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .keyboardHint {
+    justify-content: flex-start;
+  }
+
+  .timelineCard {
+    padding: 8px 10px 9px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .timelineFocusButton {
+    display: none;
+    min-width: 40px;
+    min-height: 40px;
+    padding-inline: 7px;
+  }
+
+  .stageWorkspaceFocus .timelineDock {
+    max-height: min(240px, 32dvh);
+  }
+
+  .stageWorkspaceFocus .timelineCard {
+    overflow: auto;
+  }
+
+  .stageWorkspaceFocus .timelineOptions {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .stageWorkspaceFocus .breakpointToggle {
+    justify-content: center;
+    width: 40px;
+    padding-inline: 0;
+  }
+
+  .stageWorkspaceFocus .breakpointToggle span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .stageWorkspaceFocus .shareButton {
+    width: 40px;
+    padding-inline: 0;
+    font-size: 0;
+  }
+
+  .stageWorkspace {
+    gap: 8px;
+  }
+
+  .stageWorkspaceFocus {
+    padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right))
+      max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    gap: 8px;
+  }
+
+  .stageHeader {
+    padding: 10px 13px 8px;
+  }
+
+  .stageHeader h2 {
+    font-size: 13px;
+  }
+
+  .stageHeaderActions {
+    gap: 6px;
+  }
+
+  .focusModeButton {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  .focusModeButton span,
+  .focusModeButton kbd {
+    display: none;
+  }
+
+  .phaseBadge {
+    min-height: 24px;
+    padding-inline: 8px;
+    font-size: 9px;
+  }
+
+  .eventBanner {
+    margin: 0 13px 9px;
+    padding: 8px 10px;
+  }
+
+  .eventNumber {
+    width: 25px;
+    height: 25px;
+  }
+
+  .eventBanner p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .treeWorkspace {
+    gap: 6px;
+    padding: 0 13px 10px;
+  }
+
+  .treeColumn {
+    padding: 8px;
+  }
+
+  .fiberRow {
+    min-height: 44px;
+    padding: 5px 7px;
+  }
+
+  .domSection {
+    margin: 0 13px 13px;
+    padding: 9px;
+  }
+
+  .timelineTrackWrap {
+    margin-top: 6px;
+  }
+
+  .timelineRange {
+    height: 15px;
+  }
+
+  .timelineMarkers {
+    top: 5px;
+  }
+
+  .timelineEvents {
+    margin-top: 0;
+  }
+
+  .timelineEvent {
+    min-height: 28px;
+    gap: 2px;
+    padding: 3px 4px;
+  }
+
+  .timelineControls {
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  .timelineIconButton,
+  .playButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .speedControl,
+  .breakpointToggle,
+  .shareButton {
+    min-height: 40px;
+  }
+
+  .speedControl select {
+    min-height: 38px;
+  }
+
+  .truthCard {
+    margin-top: 14px;
+  }
+
+  .treeWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .treeConnector {
+    min-height: 36px;
+    transform: rotate(90deg);
+  }
+
+  .connectorLabel {
+    display: none;
+  }
+
+  /* In immersive playback, keep the before/after trees side by side even on
+   * a phone. This preserves the causal relationship while leaving the DOM
+   * result in the same scroll-free frame. The ordinary mobile tab keeps its
+   * more spacious single-column reading order. */
+  .stageWorkspaceFocus .treeWorkspace {
+    grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+    align-items: stretch;
+    gap: 4px;
+    padding-inline: 0;
+  }
+
+  .stageWorkspaceFocus .treeColumn {
+    padding: 6px;
+  }
+
+  .stageWorkspaceFocus .treeTitle {
+    gap: 4px;
+    font-size: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .stageWorkspaceFocus .treeMeta {
+    display: none;
+  }
+
+  .stageWorkspaceFocus .treeConnector {
+    min-height: 80px;
+    transform: none;
+  }
+
+  .stageWorkspaceFocus .connectorLine {
+    width: 30px;
+  }
+
+  .stageWorkspaceFocus .connectorLabel {
+    display: block;
+    margin-top: 43px;
+    font-size: 6px;
+  }
+
+  .stageWorkspaceFocus .fiberRow {
+    grid-template-columns: 14px 10px minmax(18px, 1fr) auto;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .domList {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineControls {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .timelineOptions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .timelineOptions > * {
+    flex: 0 1 auto;
+  }
+
+  .labFooter {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    width: calc(100% - 20px);
+  }
+
+  .labHeader {
+    margin-bottom: 17px;
+  }
+
+  .breadcrumbs {
+    max-width: 210px;
+    line-height: 1.7;
+  }
+
+  .modelBadge {
+    display: none;
+  }
+
+  .titleRow h1 {
+    font-size: 34px;
+  }
+
+  .titleRow p {
+    font-size: 13px;
+  }
+
+  .stageHeader,
+  .eventBanner,
+  .treeWorkspace,
+  .domSection {
+    margin-right: 13px;
+    margin-left: 13px;
+  }
+
+  .stageHeader {
+    padding-inline: 0;
+  }
+
+  .eventBanner {
+    padding: 10px;
+  }
+
+  .treeWorkspace {
+    padding-inline: 0;
+  }
+
+  .domSection {
+    margin-right: 13px;
+    margin-left: 13px;
+  }
+
+  .timelineCard {
+    padding-inline: 10px;
+  }
+
+  .timelineControls {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .timelineOptions {
+    justify-content: flex-start;
+  }
+
+  .timelineEvents {
+    overflow-x: auto;
+    grid-template-columns: repeat(6, minmax(70px, 1fr));
+    padding-bottom: 2px;
+  }
+
+  .timelineEvents::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .timelineEvents::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 99px;
+  }
+
+  .breakpointToggle span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 860px) and (max-height: 560px) {
+  /* Give landscape phones a reachable stage header and a compact timeline.
+   * The focus overlay still owns the full viewport; ordinary mode may grow
+   * vertically so the trigger button is never trapped in a zero-height card. */
+  .pageWorkspaceMode {
+    height: auto;
+    min-height: calc(100dvh - 148px - env(safe-area-inset-bottom));
+    overflow: visible;
+  }
+
+  .stageWorkspace:not(.stageWorkspaceFocus) {
+    min-height: 88px;
+  }
+
+  .stageWorkspace:not(.stageWorkspaceFocus) .stageCard {
+    flex: 0 0 88px;
+    min-height: 88px;
+  }
+
+  .stageWorkspace:not(.stageWorkspaceFocus) .timelineDock {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .stageWorkspaceFocus {
+    gap: 4px;
+    padding: max(4px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right))
+      max(4px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-left));
+  }
+
+  .stageWorkspaceFocus .stageHeader {
+    padding: 6px 8px 5px;
+  }
+
+  .stageWorkspaceFocus .eventBanner {
+    margin: 0 8px 6px;
+    padding: 6px 8px;
+  }
+
+  .stageWorkspaceFocus .eventBanner p {
+    display: none;
+  }
+
+  .stageWorkspaceFocus .timelineCard {
+    padding: 6px 8px 7px;
+  }
+
+  .stageWorkspaceFocus .timelineEvents {
+    display: none;
+  }
+
+  .stageWorkspaceFocus .timelineTrackWrap {
+    margin-top: 2px;
+  }
+
+  .stageWorkspaceFocus .timelineControls {
+    margin-top: 3px;
+    padding-top: 3px;
+  }
+
+  .timelineFocusButton {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fiberRow,
+  .iconButton,
+  .timelineIconButton,
+  .strategyButton,
+  .operationButton,
+  .predictionOption,
+  .predictionButton,
+  .shareButton,
+  .domRow,
+  .timelineEvent,
+  .playButton,
+  .focusModeButton,
+  .timelineFocusButton {
+    transition: none;
+  }
+
+  .timelineEvent::after {
+    transition: none;
+  }
+
+  .stageWorkspaceFocus,
+  .eventBanner,
+  .fiberRow,
+  .domRow,
+  .treeConnector,
+  .phaseBadge,
+  .domSection {
+    animation: none;
+  }
+
+  .treeConnector::after {
+    animation: none !important;
+  }
+
+  .playButtonActive {
+    animation: none;
+  }
+
+  .fiberFocused {
+    animation: none;
+  }
+}
